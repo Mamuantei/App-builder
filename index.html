@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AppBuilder — Build pages visually</title>
+
+  <!-- style -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- JSZip for export (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.0/dist/jszip.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">AppBuilder</div>
+    <div class="top-actions">
+      <button id="previewBtn" class="btn">Preview</button>
+      <button id="saveBtn" class="btn">Save</button>
+      <button id="loadBtn" class="btn">Load</button>
+      <button id="exportBtn" class="btn primary">Export ZIP</button>
+      <button id="clearBtn" class="btn danger">Clear</button>
+    </div>
+  </header>
+
+  <main class="app">
+    <aside class="panel left-panel">
+      <h3 class="panel-title">Components</h3>
+      <div id="components" class="components">
+        <div class="comp" data-type="section">Section (container)</div>
+        <div class="comp" data-type="header">Header</div>
+        <div class="comp" data-type="text">Text</div>
+        <div class="comp" data-type="image">Image</div>
+        <div class="comp" data-type="button">Button</div>
+        <div class="comp" data-type="card">Card</div>
+        <div class="comp" data-type="form">Form</div>
+      </div>
+
+      <h3 class="panel-title" style="margin-top:18px">Layouts</h3>
+      <div class="components">
+        <div class="comp" data-type="cols-2">2 Columns</div>
+        <div class="comp" data-type="cols-3">3 Columns</div>
+      </div>
+
+      <div class="help muted" style="margin-top:18px;">
+        Drag components to the canvas. Select a component to edit properties. Export creates a ZIP you can host.
+      </div>
+    </aside>
+
+    <section class="canvas-wrap">
+      <div class="canvas-toolbar">
+        <div class="muted">Canvas</div>
+        <div class="canvas-actions">
+          <button id="toggleGrid" class="btn small">Toggle Grid</button>
+          <button id="undoBtn" class="btn small">Undo</button>
+        </div>
+      </div>
+
+      <div id="canvas" class="canvas" tabindex="0" aria-label="Design canvas">
+        <!-- Visual components will be appended here -->
+        <div class="canvas-hint">Drop components here — start building 👷‍♀️</div>
+      </div>
+    </section>
+
+    <aside class="panel right-panel">
+      <h3 class="panel-title">Properties</h3>
+      <div id="props" class="props">
+        <div class="muted">Select a component on the canvas to edit its properties.</div>
+      </div>
+
+      <hr />
+
+      <h3 class="panel-title">Project</h3>
+      <label>Title
+        <input id="projectTitle" type="text" placeholder="My App" />
+      </label>
+      <label>Primary color
+        <input id="primaryColor" type="color" value="#0b75d1" />
+      </label>
+    </aside>
+  </main>
+
+  <!-- Preview modal -->
+  <div id="previewModal" class="modal hidden">
+    <div class="modal-inner">
+      <button class="close" id="closePreview">✕</button>
+      <iframe id="previewFrame" srcdoc="" title="Live preview"></iframe>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <small>AppBuilder prototype — frontend only 🔨🤖🔧</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
